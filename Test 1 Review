@@ -1,0 +1,64 @@
+CSCE 330 Midterm Study Guide
+
+10% day 1 and 2 slides 5% fortran 25% syntax 25% semantics and compilers and 60% on prolog
+
+section 1, Queries (15%)
+  similar to poison fruit database question in the old linked midterm and PR[1]
+  give 3 to 4 queries against a KB
+
+section 2, Knowledge Representation (15%)
+   build a KB, like PR[1] (movies) and Pr[2] or the ceo/boss/etc. One in the linked midterm
+    write a small KB
+    
+section 3,
+
+section 4, Rules for a given KB, (15%)
+  possible recursion
+  similar to familly rules in family example
+  
+section 5
+
+
+Practice Midterm Answers
+
+1. a) enroll(bob,C,S), enroll(diane,C,S).
+   b) enroll(X,C1,_), enroll(X,C2,_), enroll(X,C3,_), \+ C1=C2, \+ C1=C3, \+ C2=C3, enroll(Y,C1,_), enroll(Y,C2,_), enroll(Y,C3,_), \+ X=Y.
+   c) class(X), \+ enroll(_,X,_).
+   
+2. a) planet(mercury,1). planet(venus,2). ... planet(neptune,8).
+      moon(the_moon,earth). ... moon(ganymede,jupiter).
+      
+      recursive solution to the same problem
+      outside(venus,mercury). outside(earth,venus). ... outside(neptune,uranus).
+      moon(the_moon,earth). ... moon(ganymede,jupiter).
+      
+   b) outer_planet(P):- planet(P,X), X >= 5.
+      
+      recursive solution
+      outer_planet(P):- outside(P,mars).
+      outer_planet(P):- outside(P,T), outer_planet(T).
+      
+   c) closer_to_sun(A,B):- m_or_p(A,B), m_or_p(C,D), B < D.
+   
+      m_or_p(P,D):- planet(P,D).
+      m_or_p(M,D):- moon(M,P), planet(P,D).
+      
+      recursive solution
+      closer_to_sun(A,B):- m2p(A,AP), m2p(B,BP), c2p(AP,BP).
+      c2p(X,Y):- outside(Y,X).
+      c2p(X,Y):- outside(Y,Z), c2p(X,Z).
+      
+      m2p(M,P):- moon(M,P).
+      m2p(M,P):- outside(P,_).
+      m2p(M,P):- outside(_,P).
+      
+3. a) define how many colors are needed? 3
+   b)
+   c) color(yellow).color(blue). color(red).
+      colorAu(W,N,Q,S,NSW,V):- W=yellow, 
+          color(S), \+ W=S,
+          color(N), \+ N=W, N=S,
+          color(Q), \+ Q=N, Q=S,
+          color(NSW), \+ NSW=Q, \+ NSW=S, ...
+          
+4.
