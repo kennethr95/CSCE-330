@@ -1,0 +1,50 @@
+## Programming in Haskell
+
+# Types
+
+every expression has a type.  
+
+the ':type' command calculates the type of an expression without evaluating the expression
+
+Basic Types:
+  Bool - logical values
+  Char - single characters
+  String - string of characters
+  Int - fixed precision integers
+  Integer - arbitrary precision integers
+  Float - floating point numbers
+
+List types
+  A list is a sequence of values of the same type
+    [False, False, True, False]
+    [1,2,3,4,5,23]
+    [a,c,g,y,t]
+    
+  Can have a list of lists if they are the same type
+    [['a'],['b'],['c']]
+    
+A tuple is a sequence of values of different types
+  (False,True)
+  (False, 'a', True)
+
+commands 'fst' for first item in tuple and 'snd' for second item in tuple
+
+A function is a mapping from values of one type to values of another type
+  not :: Bool -> Bool
+  even :: Int -> Bool
+  t1 -> t2 is a function that maps the values of type t1 to values to type t2
+
+## Curried Functions
+  Functions with multiple arguments that return functions as a result
+  
+## Haskell Example Functions
+
+Addition function
+    add :: (Int, Int) -> Int              <- this line constrains the function to the type Int
+    add (X,Y) = X + Y                     <- without the first line the function would accept floats as well
+    
+Curried addition function
+    add' :: Int -> (Int -> Int)
+    add' x y = x + y
+    
+    
